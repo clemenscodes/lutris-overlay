@@ -30,7 +30,6 @@
       withTruststore = true;
       withDeltaUpdates = true;
     };
-
     unwrapped-lutris = pkgs.lutris.override {
       extraPkgs = pkgs: [
         inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
@@ -55,12 +54,21 @@
       ];
       steamSupport = false;
     };
-    lutris = pkgs.writeShellApplication {
-      name = "lutris";
+    wrapped-lutris = pkgs.writeShellApplication {
+      name = "wrapped-lutris";
       runtimeInputs = [unwrapped-lutris];
       text = ''
         export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION="python"
         exec lutris "$@"
+      '';
+    };
+    lutris = pkgs.stdenv.mkDerivation {
+      name = "lutris";
+      phases = "installPhase";
+      installPhase = ''
+        mkdir -p $out/{bin,share}
+        ln -s ${unwrapped-lutris}/share/* $out/share
+        ln -s ${wrapped-lutris}/bin/wrapped-lutris $out/bin/lutris
       '';
     };
   in {
