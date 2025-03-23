@@ -42,6 +42,8 @@
         pkgs.curl
         pkgs.zenity
         pkgs.libsForQt5.kdialog
+        pkgs.mesa
+        pkgs.driversi686Linux.mesa
         umu
       ];
       extraLibraries = pkgs: [
@@ -52,6 +54,7 @@
         pkgs.python313Packages.protobuf
         pkgs.protobuf
         pkgs.mesa
+        pkgs.driversi686Linux.mesa
       ];
       steamSupport = false;
     };
