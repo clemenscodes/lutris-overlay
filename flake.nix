@@ -30,7 +30,8 @@
       withTruststore = true;
       withDeltaUpdates = true;
     };
-    lutris = pkgs.lutris.override {
+
+    unwrapped-lutris = pkgs.lutris.override {
       extraPkgs = pkgs: [
         inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
         inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
@@ -41,7 +42,6 @@
         pkgs.curl
         pkgs.zenity
         pkgs.libsForQt5.kdialog
-        pkgs.vulkan-tools
         umu
       ];
       extraLibraries = pkgs: [
@@ -51,8 +51,17 @@
         pkgs.python3
         pkgs.python313Packages.protobuf
         pkgs.protobuf
+        pkgs.mesa
       ];
       steamSupport = false;
+    };
+    lutris = pkgs.writeShellApplication {
+      name = "lutris";
+      runtimeInputs = [unwrapped-lutris];
+      text = ''
+        export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION="python"
+        exec lutris "$@"
+      '';
     };
   in {
     inherit overlays;
@@ -65,12 +74,10 @@
     devShells = {
       ${system} = {
         default = pkgs.mkShell {
-          PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "python";
           buildInputs = [self.packages.${system}.lutris];
           shellHook = ''
             echo "Lutris configured..."
             echo "Run lutris -d to see debug output"
-            echo "Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python in Lutris environment to activate Battle.net source"
           '';
         };
       };
