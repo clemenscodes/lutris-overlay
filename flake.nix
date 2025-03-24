@@ -55,6 +55,9 @@
         pkgs.protobuf
         pkgs.mesa
         pkgs.driversi686Linux.mesa
+        pkgs.dxvk
+        pkgs.vkd3d
+        pkgs.vkd3d-proton
       ];
       steamSupport = false;
     };
