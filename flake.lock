@@ -21,7 +21,10 @@
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "wine-overlays",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1742694749,
@@ -68,38 +71,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1742578646,
-        "narHash": "sha256-GiQ40ndXRnmmbDZvuv762vS+gew1uDpFwOfgJ8tLiEs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "94c4dbe77c0740ebba36c173672ca15a7926c993",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1742422364,
-        "narHash": "sha256-mNqIplmEohk5jRkqYqG19GA8MbQ/D4gQSK0Mu4LvfRQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a84ebe20c6bc2ecbcfb000a50776219f48d134cc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -132,14 +103,16 @@
     "wine-overlays": {
       "inputs": {
         "nix-gaming": "nix-gaming",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1742806284,
-        "narHash": "sha256-dPdZXrmAxeY9aTLdDwVKw18kJEimWsL4jwffrX/iYpQ=",
+        "lastModified": 1742807558,
+        "narHash": "sha256-w54UVS+q97h6pERHMJwyjq2Ro1mh5pxpo/7GGC1t4hc=",
         "owner": "clemenscodes",
         "repo": "wine-overlays",
-        "rev": "f315b45d33be6e38d127aacc1e243ddeaffc325e",
+        "rev": "2fddffbda976b9db98adf0762985c62e9d017fb3",
         "type": "github"
       },
       "original": {
