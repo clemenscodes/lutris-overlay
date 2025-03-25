@@ -42,11 +42,11 @@
     unwrapped-lutris = pkgs.lutris.override {
       extraPkgs = pkgs: [
         # inputs.wine-overlays.packages.${system}.wine-wow-staging-10_4
-        # inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
-        # inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
+        inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
+        inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
         inputs.wine-overlays.packages.${system}.wine-ge
-        # inputs.wine-overlays.packages.${system}.wine-osu
-        # inputs.wine-overlays.packages.${system}.wine-tkg
+        inputs.wine-overlays.packages.${system}.wine-osu
+        inputs.wine-overlays.packages.${system}.wine-tkg
         pkgs.winetricks
         pkgs.gamescope
         pkgs.mangohud
@@ -56,6 +56,7 @@
         pkgs.libsForQt5.kdialog
         pkgs.mesa
         pkgs.driversi686Linux.mesa
+        pkgs.proton-ge-bin.steamcompattool
         umu
       ];
       extraLibraries = pkgs: [
