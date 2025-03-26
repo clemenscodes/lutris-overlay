@@ -74,30 +74,7 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "umu": "umu",
         "wine-overlays": "wine-overlays"
-      }
-    },
-    "umu": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "packaging/nix",
-        "lastModified": 1742441912,
-        "narHash": "sha256-8379sxse20nhUT6VcjjpsDmYoT8EJQCy0E8bLZZdos8=",
-        "owner": "Open-Wine-Components",
-        "repo": "umu-launcher",
-        "rev": "28eef5f5638d5660fb2d7c1811c8f2915a5e8c5b",
-        "type": "github"
-      },
-      "original": {
-        "dir": "packaging/nix",
-        "owner": "Open-Wine-Components",
-        "repo": "umu-launcher",
-        "type": "github"
       }
     },
     "wine-overlays": {
