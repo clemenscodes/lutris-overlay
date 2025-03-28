@@ -26,7 +26,6 @@
     overlays = import ./overlays {inherit self system;};
     unwrapped-lutris = pkgs.lutris.override {
       extraPkgs = pkgs: [
-        inputs.wine-overlays.packages.${system}.wine-ge
         pkgs.winetricks
         pkgs.gamescope
         pkgs.mangohud
@@ -36,6 +35,8 @@
         pkgs.libsForQt5.kdialog
         pkgs.mesa
         pkgs.driversi686Linux.mesa
+        inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
+        inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
       ];
       extraLibraries = pkgs: [
         pkgs.samba
