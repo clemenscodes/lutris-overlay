@@ -32,12 +32,17 @@
         pkgs.wget
         pkgs.curl
         pkgs.zenity
+        pkgs.samba
+        pkgs.jansson
+        pkgs.gnutls
+        pkgs.python3
+        pkgs.python313Packages.protobuf
+        pkgs.protobuf
         pkgs.libsForQt5.kdialog
         pkgs.mesa
         pkgs.driversi686Linux.mesa
-        pkgs.wineWow64Packages.stagingFull
-        # inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
-        # inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
+        inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
+        inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
       ];
       extraLibraries = pkgs: [
         pkgs.samba
