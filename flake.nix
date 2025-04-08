@@ -29,6 +29,7 @@
         pkgs.winetricks
         pkgs.gamescope
         pkgs.mangohud
+        pkgs.gamemode
         pkgs.wget
         pkgs.curl
         pkgs.zenity
