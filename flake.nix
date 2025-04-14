@@ -3,14 +3,6 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    wine-overlays = {
-      url = "github:clemenscodes/wine-overlays";
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-      };
-    };
   };
   outputs = {
     self,
