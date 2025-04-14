@@ -42,6 +42,7 @@
         pkgs.libsForQt5.kdialog
         pkgs.mesa
         pkgs.driversi686Linux.mesa
+        pkgs.wineWow64Packages.stagingFull
       ];
       extraLibraries = pkgs: [
         pkgs.samba
