@@ -1,8 +1,4 @@
 {
-  nixConfig = {
-    extra-substituters = ["https://nix-gaming.cachix.org"];
-    extra-trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
-  };
   inputs = {
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -22,7 +18,19 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    inherit (pkgs) lib;
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfreePredicate = pkg:
+          builtins.elem (lib.getName pkg) [
+            "steam"
+            "steam-original"
+            "steam-run"
+            "steam-unwrapped"
+          ];
+      };
+    };
     overlays = import ./overlays {inherit self system;};
     unwrapped-lutris = pkgs.lutris.override {
       extraPkgs = pkgs: [
@@ -42,8 +50,6 @@
         pkgs.libsForQt5.kdialog
         pkgs.mesa
         pkgs.driversi686Linux.mesa
-        inputs.wine-overlays.packages.${system}.wine-wow64-staging-10_4
-        inputs.wine-overlays.packages.${system}.wine-wow64-staging-winetricks-10_4
       ];
       extraLibraries = pkgs: [
         pkgs.samba
