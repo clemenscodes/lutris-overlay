@@ -39,7 +39,6 @@
         pkgs.python3
         pkgs.python313Packages.protobuf
         pkgs.protobuf
-        pkgs.libsForQt5.kdialog
         pkgs.mesa
         pkgs.driversi686Linux.mesa
         pkgs.wineWow64Packages.stagingFull
@@ -53,9 +52,6 @@
         pkgs.protobuf
         pkgs.mesa
         pkgs.driversi686Linux.mesa
-        pkgs.dxvk
-        pkgs.vkd3d
-        pkgs.vkd3d-proton
       ];
       steamSupport = false;
     };
