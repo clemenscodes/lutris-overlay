@@ -42,11 +42,23 @@
         pkgs.mesa
         pkgs.driversi686Linux.mesa
         pkgs.wineWow64Packages.stagingFull
+        (
+          pkgs.stdenv.mkDerivation {
+            name = "winetricks-fix";
+            phases = "installPhase";
+            installPhase = ''
+              mkdir -p $out/bin
+              ln -s ${pkgs.wineWow64Packages.stagingFull}/bin/wine $out/bin/wine64
+            '';
+          }
+        )
       ];
       extraLibraries = pkgs: [
         pkgs.samba
         pkgs.jansson
         pkgs.gnutls
+        pkgs.libadwaita
+        pkgs.gtk4
         pkgs.python3
         pkgs.python313Packages.protobuf
         pkgs.protobuf
@@ -83,7 +95,20 @@
     devShells = {
       ${system} = {
         default = pkgs.mkShell {
-          buildInputs = [self.packages.${system}.lutris];
+          buildInputs = [
+            self.packages.${system}.lutris
+            pkgs.wineWow64Packages.stagingFull
+            (
+              pkgs.stdenv.mkDerivation {
+                name = "winetricks-fix";
+                phases = "installPhase";
+                installPhase = ''
+                  mkdir -p $out/bin
+                  ln -s ${pkgs.wineWow64Packages.stagingFull}/bin/wine $out/bin/wine64
+                '';
+              }
+            )
+          ];
           shellHook = ''
             echo "Lutris configured..."
             echo "Run lutris -d to see debug output"
