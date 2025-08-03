@@ -8,7 +8,7 @@
     self,
     nixpkgs,
     ...
-  } @ inputs: let
+  }: let
     system = "x86_64-linux";
     inherit (pkgs) lib;
     pkgs = import nixpkgs {
@@ -65,7 +65,7 @@
         pkgs.mesa
         pkgs.driversi686Linux.mesa
       ];
-      steamSupport = false;
+      steamSupport = true;
     };
     wrapped-lutris = pkgs.writeShellApplication {
       name = "wrapped-lutris";
